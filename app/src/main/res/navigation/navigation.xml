@@ -9,5 +9,18 @@
         android:id="@+id/sourcesFragment"
         android:name="com.gulsah.newsapp.view.SourcesFragment"
         android:label="SourcesFragment"
-       tools:layout="@layout/fragment_sources"/>
+       tools:layout="@layout/fragment_sources">
+        <action
+            android:id="@+id/sources_to_topHeadlines"
+            app:destination="@id/topHeadlinesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topHeadlinesFragment"
+        android:name="com.gulsah.newsapp.view.TopHeadlinesFragment"
+        android:label="fragment_top_headlines"
+        tools:layout="@layout/fragment_top_headlines" >
+        <argument
+            android:name="sourceObject"
+            app:argType="com.gulsah.newsapp.model.Sources" />
+    </fragment>
 </navigation>
