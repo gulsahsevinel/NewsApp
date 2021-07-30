@@ -28,7 +28,7 @@ class SourcesFragment : Fragment() {
         binding.rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         viewModel.allSourcesList.observe(viewLifecycleOwner) {
-            adapter = SourcesAdapter(it, viewModel)
+            adapter = SourcesAdapter(it)
             binding.adapter = adapter
         }
         return binding.root
@@ -36,7 +36,10 @@ class SourcesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val temp: SourcesViewModel by viewModels()
         viewModel = temp
+
+
     }
 }

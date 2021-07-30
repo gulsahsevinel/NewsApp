@@ -20,7 +20,7 @@
         android:label="fragment_top_headlines"
         tools:layout="@layout/fragment_top_headlines" >
         <argument
-            android:name="sourceObject"
-            app:argType="com.gulsah.newsapp.model.Sources" />
+            android:name="sourceId"
+            app:argType="string" />
     </fragment>
 </navigation>

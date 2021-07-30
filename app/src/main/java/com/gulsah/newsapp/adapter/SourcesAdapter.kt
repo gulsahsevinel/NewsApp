@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gulsah.newsapp.databinding.CardViewSourcesBinding
 import com.gulsah.newsapp.model.Sources
 import com.gulsah.newsapp.view.SourcesFragmentDirections
-import com.gulsah.newsapp.viewModel.SourcesViewModel
 
-class SourcesAdapter(var sourceslist: List<Sources>, var viewModel: SourcesViewModel) :
+class SourcesAdapter(
+    var sourceslist: List<Sources>
+) :
     RecyclerView.Adapter<SourcesAdapter.SourcesCardHolder>() {
     inner class SourcesCardHolder(cardViewSourcesBinding: CardViewSourcesBinding) :
         RecyclerView.ViewHolder(cardViewSourcesBinding.root) {
@@ -31,7 +32,7 @@ class SourcesAdapter(var sourceslist: List<Sources>, var viewModel: SourcesViewM
         holder.cardView.sourcesObject = source
 
         holder.cardView.cardViewSources.setOnClickListener {
-            val transition = SourcesFragmentDirections.sourcesToTopHeadlines((source))
+            val transition = SourcesFragmentDirections.sourcesToTopHeadlines(source.id)
             Navigation.findNavController(it).navigate(transition)
         }
     }
@@ -41,3 +42,4 @@ class SourcesAdapter(var sourceslist: List<Sources>, var viewModel: SourcesViewM
     }
 
 }
+
