@@ -1,33 +1,36 @@
 package com.gulsah.newsapp.model
 
+
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Articles(
-    @SerializedName("source")
-    @Expose
-    var source : Sources,
+
+    @ColumnInfo(name = "author")
     @SerializedName("author")
     @Expose
-    var author : String,
+    var author: String,
+    @ColumnInfo(name = "title")
     @SerializedName("title")
     @Expose
-    var title : String,
-    @SerializedName("description")
-    @Expose
-    var description : String,
+    var title: String,
+    @ColumnInfo(name = "url")
     @SerializedName("url")
     @Expose
-    var url : String,
+    var url: String,
+    @ColumnInfo(name = "urlToImage")
     @SerializedName("urlToImage")
     @Expose
-    var urlToImage : String,
-    @SerializedName("publishedAt")
-    @Expose
-    var publishedAt : String,
-    @SerializedName("content")
-    @Expose
-    var content : String,
+    var urlToImage: String,
+    @ColumnInfo(name = "bookmarkStatus")
+    var bookmarkStatus: Int
+
 
 ) {
+    @PrimaryKey(autoGenerate = true)
+    var id = 0
 }

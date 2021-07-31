@@ -19,6 +19,11 @@ class TopHeadlinesViewModel : ViewModel() {
         tdaor.loadTopHeadlines(id)
     }
 
+    fun allTopHeadlines() {
+        tdaor.loadTopHeadlines(id.value.toString())
+        tdaor.getTopHeadlines()
+    }
+
     fun searchTopHeadlines(q: String) {
         tdaor.searchTopHeadlines(q)
     }

@@ -1,5 +1,6 @@
 package com.gulsah.newsapp.retrofit
 
+import android.database.Observable
 import com.gulsah.newsapp.model.AllSources
 import com.gulsah.newsapp.model.TopHeadlines
 import com.gulsah.newsapp.retrofit.Constants.Companion.API_KEY
@@ -16,7 +17,7 @@ interface SourcesDaoInterface {
         @Query("sources")
         sources: String,
         @Query("apiKey")
-        apiKey : String = API_KEY
+        apiKey: String = API_KEY
     ): Call<TopHeadlines>
 
     @GET("top-headlines")
@@ -24,6 +25,6 @@ interface SourcesDaoInterface {
         @Query("q")
         sources: String,
         @Query("apiKey")
-        apiKey : String = API_KEY
+        apiKey: String = API_KEY
     ): Call<TopHeadlines>
 }

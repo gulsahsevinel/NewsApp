@@ -6,6 +6,7 @@ import com.gulsah.newsapp.model.Articles
 import com.gulsah.newsapp.model.TopHeadlines
 import com.gulsah.newsapp.retrofit.ApiUtils
 import com.gulsah.newsapp.retrofit.SourcesDaoInterface
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,6 +14,7 @@ import retrofit2.Response
 class TopHeadlinesRepository {
     private val topHeadlinesList: MutableLiveData<List<Articles>>
     private val sdaoi: SourcesDaoInterface
+
 
     init {
         topHeadlinesList = MutableLiveData()
@@ -22,6 +24,7 @@ class TopHeadlinesRepository {
     fun getTopHeadlines(): MutableLiveData<List<Articles>> {
         return topHeadlinesList
     }
+
 
     fun loadTopHeadlines(id: String) {
         sdaoi.requestTopHeadlines(id).enqueue(object : Callback<TopHeadlines> {
@@ -35,6 +38,7 @@ class TopHeadlinesRepository {
             }
         })
     }
+
 
     fun searchTopHeadlines(q: String) {
         sdaoi.searchTopHeadlines(q).enqueue(object : Callback<TopHeadlines> {
