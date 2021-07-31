@@ -23,17 +23,30 @@ class TopHeadlinesRepository {
         return topHeadlinesList
     }
 
-    fun loadTopHeadlines(id : String) {
+    fun loadTopHeadlines(id: String) {
         sdaoi.requestTopHeadlines(id).enqueue(object : Callback<TopHeadlines> {
             override fun onResponse(call: Call<TopHeadlines>, response: Response<TopHeadlines>) {
                 val list = response.body()!!.articles
-                val status = response.body()!!.status
                 topHeadlinesList.value = list
             }
 
             override fun onFailure(call: Call<TopHeadlines>, t: Throwable) {
                 Log.e("fail", "fail")
             }
+        })
+    }
+
+    fun searchTopHeadlines(q: String) {
+        sdaoi.searchTopHeadlines(q).enqueue(object : Callback<TopHeadlines> {
+            override fun onResponse(call: Call<TopHeadlines>, response: Response<TopHeadlines>) {
+                val list = response.body()!!.articles
+                topHeadlinesList.value = list
+            }
+
+            override fun onFailure(call: Call<TopHeadlines>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
         })
     }
 

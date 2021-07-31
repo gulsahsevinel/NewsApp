@@ -2,10 +2,10 @@ package com.gulsah.newsapp.view
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -17,7 +17,7 @@ import com.gulsah.newsapp.repo.TopHeadlinesRepository
 import com.gulsah.newsapp.viewModel.TopHeadlinesViewModel
 
 
-class TopHeadlinesFragment : Fragment() {
+class TopHeadlinesFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var binding: FragmentTopHeadlinesBinding
     private lateinit var adapter: TopHeadlinesAdapter
     private lateinit var viewModel: TopHeadlinesViewModel
@@ -34,6 +34,7 @@ class TopHeadlinesFragment : Fragment() {
         val id = bundle.sourceId
         viewModel.id.value = id
 
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 
         binding.fragment = this
         binding.rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -55,6 +56,27 @@ class TopHeadlinesFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val temp: TopHeadlinesViewModel by viewModels()
         viewModel = temp
+        setHasOptionsMenu(true)
+    }
+
+    //search
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.toolbar_search, menu)
+
+        val item = menu.findItem(R.id.action_search)
+        val searchView = item.actionView as SearchView
+        searchView.setOnQueryTextListener(this)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onQueryTextSubmit(query: String): Boolean {
+        viewModel.searchTopHeadlines(query)
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String): Boolean {
+        //viewModel.searchTopHeadlines(newText)
+        return true
     }
 
 

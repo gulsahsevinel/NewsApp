@@ -1,10 +1,10 @@
 package com.gulsah.newsapp.view
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +27,7 @@ class SourcesFragment : Fragment() {
         binding.fragment = this
         binding.rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
+
         viewModel.allSourcesList.observe(viewLifecycleOwner) {
             adapter = SourcesAdapter(it)
             binding.adapter = adapter
@@ -36,10 +37,9 @@ class SourcesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val temp: SourcesViewModel by viewModels()
         viewModel = temp
-
-
     }
+
+
 }

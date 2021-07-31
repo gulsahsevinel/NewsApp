@@ -18,4 +18,12 @@ interface SourcesDaoInterface {
         @Query("apiKey")
         apiKey : String = API_KEY
     ): Call<TopHeadlines>
+
+    @GET("top-headlines")
+    fun searchTopHeadlines(
+        @Query("q")
+        sources: String,
+        @Query("apiKey")
+        apiKey : String = API_KEY
+    ): Call<TopHeadlines>
 }
