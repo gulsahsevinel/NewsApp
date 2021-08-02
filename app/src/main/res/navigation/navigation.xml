@@ -22,5 +22,8 @@
         <argument
             android:name="sourceId"
             app:argType="string" />
+        <argument
+            android:name="sourceTitle"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -32,7 +32,7 @@ class SourcesAdapter(
         holder.cardView.sourcesObject = source
 
         holder.cardView.cardViewSources.setOnClickListener {
-            val transition = SourcesFragmentDirections.sourcesToTopHeadlines(source.id)
+            val transition = SourcesFragmentDirections.sourcesToTopHeadlines(source.id,source.name)
             Navigation.findNavController(it).navigate(transition)
         }
     }

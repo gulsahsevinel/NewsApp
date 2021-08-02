@@ -35,9 +35,12 @@ class TopHeadlinesFragment : Fragment(), SearchView.OnQueryTextListener {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_top_headlines, container, false)
 
+
         val bundle: TopHeadlinesFragmentArgs by navArgs()
         val id = bundle.sourceId
+        val title = bundle.sourceTitle
         viewModel.id.value = id
+        binding.toolbar.title = title
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 
